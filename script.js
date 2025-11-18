@@ -1,66 +1,49 @@
-// Product classes
-class Circle {
-  constructor() {
-    this.type = "Circle";
-  }
-  draw() {
-    return "Drawing a circle ⭕";
+// Vehicle interface
+class Vehicle {
+  drive() {}
+}
+
+// Concrete classes
+class Bike extends Vehicle {
+  drive() {
+    return "Bike is moving on the road 🏍️";
   }
 }
 
-class Square {
-  constructor() {
-    this.type = "Square";
-  }
-  draw() {
-    return "Drawing a square ⬜";
+class Car extends Vehicle {
+  drive() {
+    return "Car is driving comfortably 🚗";
   }
 }
 
-class Triangle {
-  constructor() {
-    this.type = "Triangle";
-  }
-  draw() {
-    return "Drawing a triangle 🔺";
+class Truck extends Vehicle {
+  drive() {
+    return "Truck is transporting goods 🚚";
   }
 }
 
-// Factory
-class ShapeFactory {
-  static createShape(shapeType) {
-    switch (shapeType) {
-      case "circle":
-        return new Circle();
-      case "square":
-        return new Square();
-      case "triangle":
-        return new Triangle();
+// Factory class
+class VehicleFactory {
+  static getVehicle(type) {
+    switch (type) {
+      case "bike":
+        return new Bike();
+      case "car":
+        return new Car();
+      case "truck":
+        return new Truck();
       default:
-        throw new Error("Unknown shape type: " + shapeType);
+        return null;
     }
   }
 }
 
-// UI logic
-document.addEventListener("DOMContentLoaded", () => {
-  const select = document.getElementById("shape-select");
-  const button = document.getElementById("create-btn");
-  const output = document.getElementById("output");
+// UI Logic
+document.getElementById("create-btn").addEventListener("click", () => {
+  const selected = document.getElementById("vehicle-select").value;
+  const vehicle = VehicleFactory.getVehicle(selected);
 
-  button.addEventListener("click", () => {
-    try {
-      const type = select.value;
-      const shape = ShapeFactory.createShape(type);
-
-      output.innerHTML = `
-        <div>
-          <strong>Factory created:</strong> ${shape.type}<br />
-          <strong>Action:</strong> ${shape.draw()}
-        </div>
-      `;
-    } catch (err) {
-      output.textContent = err.message;
-    }
-  });
+  document.getElementById("output").innerHTML =
+    `<b>Factory Created:</b> ${selected.toUpperCase()}<br><br>
+     <b>Action:</b> ${vehicle.drive()}`;
 });

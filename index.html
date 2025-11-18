@@ -1,117 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Factory Design Pattern Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <div class="hero-content">
-        <h1>Factory Design Pattern</h1>
-        <p>
-          A simple JavaScript example showing how a factory creates objects
-          without exposing the creation logic.
-        </p>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Factory Design Pattern</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <main class="container">
-      <section class="card">
-        <h2>What is the Factory Pattern?</h2>
-        <p>
-          The <strong>Factory Pattern</strong> provides an interface for creating
-          objects in a superclass, but allows subclasses or a specialized
-          “factory” object to decide which class to instantiate.
-        </p>
-        <p>
-          Instead of calling <code>new</code> directly everywhere, you ask a
-          factory to give you an object.
-        </p>
-      </section>
+<header>
+  <h1>Vehicle Factory – Real Time Example</h1>
+  <p>Select a vehicle type and the factory will create the correct object.</p>
+</header>
 
-      <section class="card">
-        <h2>Demo: Shape Factory</h2>
-        <p>
-          Choose a shape and click “Create Shape”. The factory will create the
-          correct object for you.
-        </p>
+<main>
+  <div class="card">
+    <h2>Create Vehicle</h2>
 
-        <div class="controls">
-          <label for="shape-select">Select shape:</label>
-          <select id="shape-select">
-            <option value="circle">Circle</option>
-            <option value="square">Square</option>
-            <option value="triangle">Triangle</option>
-          </select>
-          <button id="create-btn">Create Shape</button>
-        </div>
+    <label>Select vehicle:</label>
 
-        <div id="output" class="output"></div>
-      </section>
+    <select id="vehicle-select">
+      <option value="bike">Bike</option>
+      <option value="car">Car</option>
+      <option value="truck">Truck</option>
+    </select>
 
-      <section class="card">
-        <h2>Factory Pattern Code (JavaScript)</h2>
-        <pre><code>// Product classes
-class Circle {
-  constructor() {
-    this.type = "Circle";
-  }
-  draw() {
-    return "Drawing a circle ⭕";
-  }
-}
+    <button id="create-btn">Create Vehicle</button>
 
-class Square {
-  constructor() {
-    this.type = "Square";
-  }
-  draw() {
-    return "Drawing a square ⬜";
-  }
-}
+    <div id="output" class="output"></div>
+  </div>
+</main>
 
-class Triangle {
-  constructor() {
-    this.type = "Triangle";
-  }
-  draw() {
-    return "Drawing a triangle 🔺";
-  }
-}
+<footer>
+  Vehicle Factory Pattern Demo • Made with ❤️ by You
+</footer>
 
-// Factory
-class ShapeFactory {
-  static createShape(shapeType) {
-    switch (shapeType) {
-      case "circle":
-        return new Circle();
-      case "square":
-        return new Square();
-      case "triangle":
-        return new Triangle();
-      default:
-        throw new Error("Unknown shape type");
-    }
-  }
-}</code></pre>
-      </section>
-
-      <section class="card">
-        <h2>Why Use the Factory Pattern?</h2>
-        <ul>
-          <li>Centralizes object creation logic in one place.</li>
-          <li>Makes your code easier to extend (add new types later).</li>
-          <li>Reduces duplication of <code>new SomeClass()</code> everywhere.</li>
-        </ul>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>Built by &lt;your name&gt; • Factory Pattern Demo</p>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+<script src="script.js"></script>
+</body>
 </html>
